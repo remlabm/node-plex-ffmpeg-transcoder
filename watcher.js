@@ -46,7 +46,6 @@ client.find("/library/sections", { type: 'movie'}).then( function( result ){
           } );
         }, function( err, results ){
           //console.log( item )
-          log.info( results );
           async.each(_.compact( results), function( media, cb ){
 
             var job = jobs.create('convert', media)
