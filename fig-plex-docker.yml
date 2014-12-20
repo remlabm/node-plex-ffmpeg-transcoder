@@ -16,3 +16,5 @@ jobserver:
     VIRTUAL_HOST: 'job-server.thor.home'
     VIRTUAL_PORT: '3000'
     NODE_ENV: 'plex-docker'
+  volumes:
+    - "/home/shared:/data"

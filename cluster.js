@@ -32,7 +32,7 @@ if (cluster.isMaster) {
 
     async.map(job.data.files, function (file, next) {
 
-      file = Config.get('Worker.srcPath') + file;
+      file = Config.get('Worker.srcPath') +'/'+ file;
       var output = path.dirname(file) + '/' + path.basename(file, path.extname(file)) + '.mp4';
 
       ffmpeg(file)
@@ -74,7 +74,7 @@ if (cluster.isMaster) {
 
       // remove old files
       async.each(job.data.files, function (file) {
-        file = Config.get('Worker.srcPath') + file;
+        file = Config.get('Worker.srcPath') + '/' + file;
         log.info('Removing:', file);
         return fs.unlink(file);
       });
