@@ -62,8 +62,8 @@ RUN PATH="$PATH:$HOME/bin" make
 RUN	make install
 RUN	make distclean
 RUN	hash -r
+env PATH $HOME/bin:$PATH
 
-WORKDIR /work
 
 VOLUME ['/config', '/data']
 
