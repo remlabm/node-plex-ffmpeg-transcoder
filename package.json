@@ -1,0 +1,23 @@
+{
+  "name": "plex-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install && node cluster.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^0.9.0",
+    "bunyan": "^1.2.3",
+    "commander": "^2.5.0",
+    "config": "^1.9.0",
+    "fluent-ffmpeg": "^2.0.0-rc3",
+    "kue": "^0.8.10",
+    "lodash": "^2.4.1",
+    "watch": "^0.13.0",
+    "yaml": "^0.2.3"
+  }
+}

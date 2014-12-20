@@ -1,0 +1,17 @@
+redis:
+  image: redis
+  expose:
+    - "6379"
+  ports:
+    - "6379:6379"
+jobserver:
+  build: .
+  links:
+    - redis
+  expose:
+    - "3000"
+  ports:
+    - "3000:3000"
+  environment:
+    VIRTUAL_HOST: 'job-server.thor.home'
+    VIRTUAL_PORT: '3000'
