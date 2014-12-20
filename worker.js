@@ -20,7 +20,7 @@ jobs.process('convert', function( job, done ){
 
   async.map( job.data.files, function( file, next ){
 
-    //file = Config.get('Worker.srcPath') + file.replace('/data', '');
+    file = Config.get('Worker.srcPath') + file;
     var output = path.dirname( file ) + '/' + path.basename( file, path.extname( file )) +'.mp4';
 
     ffmpeg(file)
@@ -62,7 +62,7 @@ jobs.process('convert', function( job, done ){
 
     // remove old files
     async.each( job.data.files, function( file ){
-      file = Config.get('Worker.srcPath') + file.replace('/data', '');
+      file = Config.get('Worker.srcPath') + file;
       log.info('Removing:', file)
       return fs.unlink( file );
     });

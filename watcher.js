@@ -22,7 +22,6 @@ client.find("/library/sections", { type: 'movie'}).then( function( result ){
       async.each( results.video, function( item, next ){
 
         if( !_.isArray( item.media )){
-          log.error( 'why?')
           return next();
         }
 
@@ -41,11 +40,13 @@ client.find("/library/sections", { type: 'movie'}).then( function( result ){
             key: item.attributes.key,
             refresh: section.uri + '/refresh',
             title: item.attributes.title,
-            files: _.deepPluck( media.part, 'attributes.file')
+            files: _.map( _.deepPluck( media.part, 'attributes.file'), function( file ){
+              return  file.replace('/data/', '');
+            })
           } );
         }, function( err, results ){
           //console.log( item )
-
+          log.info( results );
           async.each(_.compact( results), function( media, cb ){
 
             var job = jobs.create('convert', media)

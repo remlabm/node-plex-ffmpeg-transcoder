@@ -74,8 +74,8 @@ if (cluster.isMaster) {
 
       // remove old files
       async.each(job.data.files, function (file) {
-        file = Config.get('Worker.srcPath') + file.replace('/data', '');
-        log.info('Removing:', file)
+        file = Config.get('Worker.srcPath') + file;
+        log.info('Removing:', file);
         return fs.unlink(file);
       });
 
